@@ -3,7 +3,6 @@
 namespace App\Filament\Admin\Resources;
 
 use App\Filament\Admin\Resources\TransaksiResource\Pages;
-use App\Filament\Admin\Resources\TransaksiResource\RelationManagers;
 use App\Models\Transaksi;
 use App\Models\Paket;
 use Filament\Forms;
@@ -14,7 +13,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class TransaksiResource extends Resource
 {
@@ -45,14 +43,13 @@ class TransaksiResource extends Resource
                     ->reactive()
                     ->afterStateUpdated(function ($state, callable $set) {
                         $harga = Paket::find($state)?->harga ?? 0;
-                        $set('harga', $harga); // Set harga di state
+                        $set('harga', $harga);
                     })
                     ->required(),
 
-                // Tambahkan field harga tersembunyi
                 Forms\Components\TextInput::make('harga')
                     ->label('Harga Paket')
-                    ->readonly() // Tidak bisa diubah secara manual
+                    ->readonly()
                     ->reactive()
                     ->numeric()
                     ->required(),
@@ -76,8 +73,19 @@ class TransaksiResource extends Resource
                     ->required(),
 
                 Forms\Components\FileUpload::make('bukti')
-                    ->image(),
+                    ->label('Bukti Transfer')
+                    ->image()
+                    ->directory('bukti-transfer')
+                    ->visibility('public'),
 
+                Select::make('status_pembayaran')
+                    ->label('Status Pembayaran')
+                    ->options([
+                        'belum' => 'Belum Lunas',
+                        'lunas' => 'Lunas',
+                    ])
+                    ->required()
+                    ->default('belum'),
             ]);
     }
 
@@ -86,25 +94,46 @@ class TransaksiResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('metode')
-                    ->searchable(),
+                    ->label('Metode'),
+
                 Tables\Columns\TextColumn::make('client.name')
-                    ->searchable(),
+                    ->label('Client'),
+
                 Tables\Columns\TextColumn::make('paket.nama')
-                    ->searchable(),
+                    ->label('Paket'),
+
                 Tables\Columns\TextColumn::make('berat')
                     ->numeric()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('total')
                     ->numeric()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('tanggal')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('bukti')
-                    ->searchable(),
+
+                Tables\Columns\TextColumn::make('tanggal'),
+
+                Tables\Columns\ImageColumn::make('bukti')
+                    ->label('Bukti TF')
+                    ->height(50)
+                    ->width(50),
+
+                Tables\Columns\BadgeColumn::make('status_pembayaran')
+                    ->label('Status')
+                    ->colors([
+                        'danger' => 'belum',
+                        'success' => 'lunas',
+                    ])
+                    ->enum([
+                        'belum' => 'Belum Lunas',
+                        'lunas' => 'Lunas',
+                    ])
+                    ->sortable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -125,9 +154,7 @@ class TransaksiResource extends Resource
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array

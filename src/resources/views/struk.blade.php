@@ -10,8 +10,8 @@
 </head>
 <body>
     <div class="header">
-        <h2>Laundry Bersih</h2>
-        <p>Jl. Contoh No.123, Telp: 08123456789</p>
+        <h2>MRS. CLEAN LOUNDRY</h2>
+        <p>bukit gading balaraja blok L3 no 1</p>
     </div>
     <hr>
     <p><strong>ID Transaksi:</strong> {{ $transaksi->id }}</p>

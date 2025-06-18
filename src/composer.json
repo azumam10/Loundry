@@ -14,11 +14,13 @@
         "bezhansalleh/filament-shield": "*",
         "diogogpinto/filament-auth-ui-enhancer": "*",
         "filament/filament": "^3.3",
+        "flowframe/laravel-trend": "*",
         "hasnayeen/themes": "*",
         "joaopaulolndev/filament-edit-profile": "^1.0",
         "joshembling/image-optimizer": "^1.6",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1",
+        "leandrocfe/filament-apex-charts": "^3.2",
         "njxqlus/filament-progressbar": "*",
         "z3d0x/filament-logger": "^0.8.0"
     },

@@ -17,6 +17,7 @@ class Transaksi extends Model
         'total',
         'tanggal',
         'bukti',
+        'status_pembayaran',
     ];
 
     public function paket()
@@ -28,4 +29,6 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+ 
 }
