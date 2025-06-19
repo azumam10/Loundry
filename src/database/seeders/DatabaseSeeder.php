@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -13,13 +12,23 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-        $user = \App\Models\User::factory()->create([
-            'name' => 'Admin',
-            'email' => 'admin@admin.com',
-        ]);
+        // Cek apakah user admin sudah ada, jika belum maka buat
+        $user = User::firstOrCreate(
+            ['email' => 'admin@admin.com'],
+            [
+                'name' => 'Admin',
+                'password' => bcrypt('password'), // Ganti jika perlu
+                'email_verified_at' => now(),
+            ]
+        );
 
         $user->assignRole('super_admin');
+
+        // Panggil seeder lain
+        $this->call([
+            ClientSeeder::class,
+            PaketSeeder::class,
+            TransaksiSeeder::class,
+        ]);
     }
 }
