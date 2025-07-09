@@ -35,7 +35,7 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->profile(\App\Filament\Pages\Auth\EditProfile::class, isSimple: false)
             ->defaultThemeMode(ThemeMode::Light)
-            ->font('Montserrat')
+            ->font('Inter')
             ->colors([
                 'primary' => Color::Blue,
             ])
