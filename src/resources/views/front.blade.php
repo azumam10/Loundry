@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umamis Loundry - Solusi Laundry Terpercaya</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Umamis Laundry - Solusi Laundry Terpercaya</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css " rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('front/style.css') }}">
 </head>
 <body>
+
+    <!-- Header -->
     <header>
         <div class="container">
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-tint"></i>
-                    <h1>Umamis Loundry</h1>
+                    <h1>Umamis <span>Laundry</span></h1>
                 </div>
                 <nav>
                     <ul>
@@ -27,8 +29,11 @@
         </div>
     </header>
 
+    <!-- Main Content -->
     <main>
         <div class="container">
+
+            <!-- Hero Section -->
             <section id="tentang" class="section hero">
                 <i class="fas fa-star"></i>
                 <h2>Tentang Kami</h2>
@@ -36,8 +41,9 @@
                 <a href="#jasa" class="cta-button">Lihat Layanan Kami</a>
             </section>
 
+            <!-- Services Section -->
             <section id="jasa" class="section">
-                <h2><i class="fas fa-concierge-bell"></i>Layanan Kami</h2>
+                <h2><i class="fas fa-concierge-bell"></i> Layanan Kami</h2>
                 <p>Kami menyediakan berbagai layanan laundry profesional untuk memenuhi kebutuhan Anda:</p>
                 
                 <div class="services-grid">
@@ -52,15 +58,16 @@
                         <p>Layanan cuci lengkap dengan pelipatan rapi siap pakai, Dengan harga Rp. 9.000</p>
                     </div>
                     <div class="service-card">
-                        <i class="fas fa-iron"></i>
+                        <i class="fas fa-hat-cowboy"></i>
                         <h3>Setrika</h3>
-                        <p>Layanan setrika profesional untuk hasil yang rapi dan berkualitas, denga harga Rp. 5.000</p>
+                        <p>Layanan setrika profesional untuk hasil yang rapi dan berkualitas, denga harga Rp.5.000</p>
                     </div>
                 </div>
             </section>
 
+            <!-- Search Section -->
             <section id="cari" class="section">
-                <h2><i class="fas fa-search"></i>Cari Cucian Anda</h2>
+                <h2><i class="fas fa-search"></i> Cari Cucian Anda</h2>
                 <p>Masukkan nama Anda untuk melacak status cucian:</p>
                 
                 <div class="search-form">
@@ -72,29 +79,23 @@
                     </form>
                 </div>
 
-                @if(session('hasil'))
-                    <div class="hasil-pencarian">
-                        <h3>Hasil Pencarian:</h3>
-                        @foreach(session('hasil') as $trx)
-                            <div class="hasil-item">
-                                <div class="item-info">
-                                    <span class="tanggal"><i class="fas fa-calendar"></i> {{ $trx->tanggal }}</span>
-                                    <span class="total"><i class="fas fa-money-bill-wave"></i> Rp {{ number_format($trx->total, 0, ',', '.') }}</span>
-                                    <span class="status status-{{ strtolower($trx->status_pembayaran) }}">
-                                        <i class="fas fa-info-circle"></i> {{ $trx->status_pembayaran }}
-                                    </span>
-                                    <span class="status-cucian">
-                                        <i class="fas fa-tshirt"></i> Status Cucian: {{ $trx->status_cucian }}
-                                    </span>
-                                </div>
-                            </div>
-                        @endforeach
+                <!-- Hasil Pencarian (Dummy) -->
+                <div class="hasil-pencarian">
+                    <h3>Hasil Pencarian:</h3>
+                    <div class="hasil-item">
+                        <div class="item-info">
+                            <span class="tanggal"><i class="fas fa-calendar"></i> 10 April 2025</span>
+                            <span class="total"><i class="fas fa-money-bill-wave"></i> Rp 45.000</span>
+                            <span class="status status-lunas"><i class="fas fa-info-circle"></i> Lunas</span>
+                            <span class="status-cucian"><i class="fas fa-tshirt"></i> Status Cucian: Selesai</span>
+                        </div>
                     </div>
-                @endif
+                </div>
             </section>
 
+            <!-- Contact Section -->
             <section id="kontak" class="section">
-                <h2><i class="fas fa-phone"></i>Kontak Kami</h2>
+                <h2><i class="fas fa-phone"></i> Kontak Kami</h2>
                 <p>Hubungi kami untuk informasi lebih lanjut atau konsultasi gratis:</p>
                 
                 <div class="contact-info">
@@ -121,13 +122,16 @@
                     </div>
                 </div>
             </section>
+
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 Laundry Kita. Semua hak dilindungi undang-undang.</p>
+            <p>&copy; 2025 Umamis Laundry. Semua hak dilindungi undang-undang.</p>
         </div>
     </footer>
+
 </body>
 </html>
