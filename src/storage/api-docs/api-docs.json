@@ -1,0 +1,338 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My API",
+        "description": "This Is API Documentation for My Application",
+        "termsOfService": "http://localhost/terms",
+        "contact": {
+            "name": "API Support",
+            "email": "support@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "Local API Server"
+        }
+    ],
+    "paths": {
+        "/api/transaksis": {
+            "get": {
+                "tags": [
+                    "Transaksis"
+                ],
+                "summary": "Ambil semua transaksi",
+                "operationId": "61cfde4335c15aab607320e5f88092f1",
+                "responses": {
+                    "200": {
+                        "description": "Sukses"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Transaksis"
+                ],
+                "summary": "Buat transaksi baru",
+                "operationId": "dcadd0e91bb717ef3142552c2e4253bc",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "metode",
+                                    "client_id",
+                                    "paket_id",
+                                    "harga",
+                                    "berat",
+                                    "total",
+                                    "tanggal"
+                                ],
+                                "properties": {
+                                    "metode": {
+                                        "type": "string",
+                                        "example": "cash"
+                                    },
+                                    "client_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "paket_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "harga": {
+                                        "type": "integer",
+                                        "example": 10000
+                                    },
+                                    "berat": {
+                                        "type": "integer",
+                                        "example": 5
+                                    },
+                                    "total": {
+                                        "type": "integer",
+                                        "example": 50000
+                                    },
+                                    "tanggal": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-07-21"
+                                    },
+                                    "bukti": {
+                                        "type": "string",
+                                        "format": "binary",
+                                        "nullable": true
+                                    },
+                                    "status_cucian": {
+                                        "type": "string",
+                                        "example": "proses"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Berhasil dibuat"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/transaksis/{id}": {
+            "get": {
+                "tags": [
+                    "Transaksis"
+                ],
+                "summary": "Lihat detail transaksi",
+                "operationId": "7bf20d2e885db57614adc91982361f62",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Sukses"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Transaksis"
+                ],
+                "summary": "Update transaksi",
+                "operationId": "810fa415ca4e70f83e37e3678cc7b4ee",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "metode": {
+                                        "type": "string",
+                                        "example": "cash"
+                                    },
+                                    "client_id": {
+                                        "type": "integer",
+                                        "example": 1
+                                    },
+                                    "paket_id": {
+                                        "type": "integer",
+                                        "example": 2
+                                    },
+                                    "harga": {
+                                        "type": "integer",
+                                        "example": 10000
+                                    },
+                                    "berat": {
+                                        "type": "integer",
+                                        "example": 5
+                                    },
+                                    "total": {
+                                        "type": "integer",
+                                        "example": 50000
+                                    },
+                                    "tanggal": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2025-07-21"
+                                    },
+                                    "bukti": {
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "status_cucian": {
+                                        "type": "string",
+                                        "example": "selesai"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Berhasil diperbarui"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Transaksis"
+                ],
+                "summary": "Hapus transaksi",
+                "operationId": "b64eab44ba463c2774bf1dcacd0c77b0",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "Berhasil dihapus"
+                    }
+                },
+                "security": [
+                    {
+                        "ApiKeyAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Transaksi": {
+                "title": "Transaksi",
+                "required": [
+                    "id",
+                    "metode",
+                    "client_id",
+                    "paket_id",
+                    "harga",
+                    "berat",
+                    "total",
+                    "tanggal"
+                ],
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "metode": {
+                        "type": "string",
+                        "example": "cash"
+                    },
+                    "client_id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "paket_id": {
+                        "type": "integer",
+                        "example": 2
+                    },
+                    "harga": {
+                        "type": "integer",
+                        "example": 10000
+                    },
+                    "berat": {
+                        "type": "integer",
+                        "example": 5
+                    },
+                    "total": {
+                        "type": "integer",
+                        "example": 50000
+                    },
+                    "tanggal": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-07-21"
+                    },
+                    "bukti": {
+                        "type": "string",
+                        "example": "bukti_transfer.jpg",
+                        "nullable": true
+                    },
+                    "status_cucian": {
+                        "type": "string",
+                        "example": "proses",
+                        "nullable": true
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-21T12:00:00Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2025-07-21T12:10:00Z"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "ApiKeyAuth": {
+                "type": "apiKey",
+                "name": "X-API-KEY",
+                "in": "header"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Transaksis",
+            "description": "Transaksis"
+        }
+    ]
+}
