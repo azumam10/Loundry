@@ -18,6 +18,8 @@ class Transaksi extends Model
         'tanggal',
         'bukti',
         'status_pembayaran',
+        'status_cucian_id',
+
     ];
 
     public function paket()
@@ -29,6 +31,11 @@ class Transaksi extends Model
     {
         return $this->belongsTo(Client::class);
     }
+
+    public function statusCucian()
+{
+    return $this->belongsTo(StatusCucian::class, 'status_cucian_id');
+}
 
  
 }

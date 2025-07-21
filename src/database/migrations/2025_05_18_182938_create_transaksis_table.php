@@ -14,15 +14,16 @@ return new class extends Migration
         Schema::create('transaksis', function (Blueprint $table) {
             $table->id();
             $table->string('metode');
-            $table->string('client_id');
-            $table->string('paket_id');
+            $table->foreignId('client_id')->constrained('clients')->onDelete('cascade');
+            $table->foreignId('paket_id')->constrained('pakets')->onDelete('cascade');
             $table->integer('harga');
             $table->integer('berat');
             $table->integer('total');
             $table->date('tanggal');
             $table->string('bukti')->nullable();
+            $table->foreignId('status_cucian_id')->nullable()->constrained('status_cucians')->nullOnDelete();
             $table->timestamps();
-        });
+});
     }
 
     /**

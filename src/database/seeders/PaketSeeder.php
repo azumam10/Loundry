@@ -1,8 +1,8 @@
 <?php
 
 namespace Database\Seeders;
+
 use App\Models\Paket;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PaketSeeder extends Seeder
@@ -12,6 +12,19 @@ class PaketSeeder extends Seeder
      */
     public function run(): void
     {
-        
+        Paket::insert([
+            [
+                'nama' => 'Cuci',
+                'harga' => 7000,
+            ],
+            [
+                'nama' => 'Cuci Gosok',
+                'harga' => 9000,
+            ],
+            [
+                'nama' => 'Gosok',
+                'harga' => 5000,
+            ],
+        ]);
     }
 }

@@ -27,6 +27,8 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\HtmlString;
 use Filament\Support\Enums\FontWeight;
 use Filament\Support\Colors\Color;
+use App\Models\StatusCucian;
+
 
 class TransaksiResource extends Resource
 {
@@ -212,6 +214,16 @@ class TransaksiResource extends Resource
                                 ");
                             }),
                     ]),
+                    
+                    Select::make('status_cucian_id')
+                    ->label('Status Cucian')
+                    ->relationship('statusCucian', 'nama_status')
+                    ->searchable()
+                    ->preload()
+                    ->required()
+                    ->native(false)
+                    ->prefixIcon('heroicon-o-adjustments-horizontal')
+                    ->helperText('Status proses laundry saat ini'),
 
                 Section::make('Pembayaran & Status')
                     ->description('Upload bukti pembayaran dan status')
@@ -321,6 +333,25 @@ class TransaksiResource extends Resource
                     ->defaultImageUrl(url('images/no-image.png'))
                     ->tooltip('Klik untuk memperbesar'),
 
+                    // Di bagian columns()
+Tables\Columns\BadgeColumn::make('statusCucian.nama_status')
+    ->label('Status Cucian')
+    ->formatStateUsing(fn ($state) => ucfirst($state)) // Format tampilan
+    ->colors([
+        'gray' => fn ($state) => $state === 'diterima',
+        'warning' => fn ($state) => $state === 'proses',
+        'info' => fn ($state) => $state === 'selesai',
+        'success' => fn ($state) => $state === 'diambil',
+    ])
+    ->icons([
+        'heroicon-o-inbox-arrow-down' => fn ($state) => $state === 'diterima',
+        'heroicon-o-arrow-path' => fn ($state) => $state === 'proses',
+        'heroicon-o-check-circle' => fn ($state) => $state === 'selesai',
+        'heroicon-o-check-badge' => fn ($state) => $state === 'diambil',
+    ])
+    ->sortable()
+    ->searchable(),
+    
                 Tables\Columns\BadgeColumn::make('status_pembayaran')
                     ->label('Status')
                     ->colors([
@@ -336,6 +367,8 @@ class TransaksiResource extends Resource
                         'lunas' => 'Lunas',
                     ])
                     ->sortable(),
+                    
+                    
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->label('Dibuat')
