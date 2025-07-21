@@ -21,7 +21,7 @@ return new class extends Migration
             $table->integer('total');
             $table->date('tanggal');
             $table->string('bukti')->nullable();
-            $table->foreignId('status_cucian_id')->nullable()->constrained('status_cucians')->nullOnDelete();
+           $table->string('status_cucian')->nullable();//proses selesai ambil
             $table->timestamps();
 });
     }

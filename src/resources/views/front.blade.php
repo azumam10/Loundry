@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Laundry Kita - Solusi Laundry Terpercaya</title>
+    <title>Umamis Loundry - Solusi Laundry Terpercaya</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('front/style.css') }}">
 </head>
@@ -13,7 +13,7 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-tint"></i>
-                    <h1>Umamis Looundry</h1>
+                    <h1>Umamis Loundry</h1>
                 </div>
                 <nav>
                     <ul>
@@ -49,12 +49,12 @@
                     <div class="service-card">
                         <i class="fas fa-tshirt"></i>
                         <h3>Cuci Lipat</h3>
-                        <p>Layanan cuci lengkap dengan pelipatan rapi siap pakai.</p>
+                        <p>Layanan cuci lengkap dengan pelipatan rapi siap pakai, Dengan harga Rp. 9.000</p>
                     </div>
                     <div class="service-card">
                         <i class="fas fa-iron"></i>
                         <h3>Setrika</h3>
-                        <p>Layanan setrika profesional untuk hasil yang rapi dan berkualitas.</p>
+                        <p>Layanan setrika profesional untuk hasil yang rapi dan berkualitas, denga harga Rp. 5.000</p>
                     </div>
                 </div>
             </section>
@@ -83,6 +83,9 @@
                                     <span class="status status-{{ strtolower($trx->status_pembayaran) }}">
                                         <i class="fas fa-info-circle"></i> {{ $trx->status_pembayaran }}
                                     </span>
+                                    <span class="status-cucian">
+                                        <i class="fas fa-tshirt"></i> Status Cucian: {{ $trx->status_cucian }}
+                                    </span>
                                 </div>
                             </div>
                         @endforeach
@@ -99,21 +102,21 @@
                         <i class="fas fa-phone-alt"></i>
                         <div>
                             <h3>Telepon</h3>
-                            <p>0812-3456-7890</p>
+                            <p>083819124426</p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>Email</h3>
-                            <p>laundry@example.com</p>
+                            <p><a href="mailto:azkiya.simdig32@gmail.com">azkiya.simdig32@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
                         <i class="fas fa-clock"></i>
                         <div>
                             <h3>Jam Operasional</h3>
-                            <p>Senin - Minggu: 08:00 - 22:00</p>
+                            <p>Senin - Minggu: 08:00 - 16:00</p>
                         </div>
                     </div>
                 </div>

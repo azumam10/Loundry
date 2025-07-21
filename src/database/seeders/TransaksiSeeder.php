@@ -6,7 +6,6 @@ use Illuminate\Database\Seeder;
 use App\Models\Client;
 use App\Models\Paket;
 use App\Models\Transaksi;
-use App\Models\StatusCucian;
 
 class TransaksiSeeder extends Seeder
 {
@@ -14,8 +13,8 @@ class TransaksiSeeder extends Seeder
     {
         $clientIds = Client::pluck('id')->toArray();
         $pakets = Paket::all();
-        $statusCucianIds = StatusCucian::pluck('id')->toArray();
         $statusPembayaranOptions = ['lunas', 'belum'];
+        $statusCucianOptions = ['proses', 'selesai', 'diambil'];
 
         foreach (range(1, 12) as $i) {
             $paket = $pakets->random();
@@ -23,16 +22,16 @@ class TransaksiSeeder extends Seeder
             $tanggal = now()->subMonths(12 - $i)->startOfMonth()->addDays(rand(0, 27));
 
             Transaksi::create([
-                'client_id'          => $clientIds[array_rand($clientIds)],
-                'paket_id'           => $paket->id,
-                'harga'              => $paket->harga,
-                'berat'              => $berat,
-                'total'              => $paket->harga * $berat,
-                'tanggal'            => $tanggal,
-                'metode'             => 'tunai',
-                'status_pembayaran'  => $statusPembayaranOptions[array_rand($statusPembayaranOptions)],
-                'status_cucian_id'   => $statusCucianIds[array_rand($statusCucianIds)],
-                'bukti'              => null,
+                'client_id'         => $clientIds[array_rand($clientIds)],
+                'paket_id'          => $paket->id,
+                'harga'             => $paket->harga,
+                'berat'             => $berat,
+                'total'             => $paket->harga * $berat,
+                'tanggal'           => $tanggal,
+                'metode'            => 'tunai',
+                'status_pembayaran' => $statusPembayaranOptions[array_rand($statusPembayaranOptions)],
+                'status_cucian' => $statusCucianOptions[array_rand($statusCucianOptions)],
+                'bukti'             => null,
             ]);
         }
     }
