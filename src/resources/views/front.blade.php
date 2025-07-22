@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Umamis Laundry - Solusi Laundry Terpercaya</title>
+    <title>Mrs.Clean Loundery</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css " rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('front/style.css') }}">
 </head>
@@ -15,7 +15,7 @@
             <div class="header-content">
                 <div class="logo">
                     <i class="fas fa-tint"></i>
-                    <h1>Umamis <span>Laundry</span></h1>
+                    <h1>MRS.CLEAN <span>LOUNDRY</span></h1>
                 </div>
                 <nav>
                     <ul>
@@ -110,7 +110,7 @@
                         <i class="fas fa-envelope"></i>
                         <div>
                             <h3>Email</h3>
-                            <p><a href="mailto:azkiya.simdig32@gmail.com">azkiya.simdig32@gmail.com</a></p>
+                            <p><a href="mailto:azkiya.simdig32@gmail.com">mrsclean@gmail.com</a></p>
                         </div>
                     </div>
                     <div class="contact-item">
@@ -129,7 +129,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Umamis Laundry. Semua hak dilindungi undang-undang.</p>
+            <p>&copy; Bukit Gading Balaraja Blok L3 no 1.</p>
         </div>
     </footer>
 

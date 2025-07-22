@@ -23,6 +23,7 @@
         "laravel/tinker": "^2.10.1",
         "leandrocfe/filament-apex-charts": "^3.2",
         "njxqlus/filament-progressbar": "*",
+        "spatie/laravel-permission": "^6.20",
         "z3d0x/filament-logger": "^0.8.0"
     },
     "require-dev": {

@@ -284,4 +284,10 @@ class Pendapatan extends ChartWidget
         
         return "📈 Total Pendapatan {$currentYear}: {$formattedTotal} | 🧾 Total Transaksi: {$totalTransaksi}";
     }
+
+    public static function canView(): bool
+{
+    return auth()->user()->hasRole('owner');
+}
+
 }
